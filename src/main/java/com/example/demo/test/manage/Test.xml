@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.test.manage.Test">
+
+
+<sql id="testJoins">
+    LEFT JOIN t_test_b b ON b.id = a.test_id
+</sql>
+
+<select id="get" resultType="Test">
+SELECT
+id
+FROM t_test a
+<include refid="testJoins"/>
+WHERE a.id = #{id}
+</select>
+</mapper>
